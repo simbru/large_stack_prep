@@ -1,0 +1,124 @@
+IGOR
+WAVES /D /N=(60) wParamsNum
+BEGIN
+80.0
+6018.0
+-4.0
+4.0
+15.0
+1.0
+4.0
+5.0
+-1.0
+5.0
+5.0
+2.0
+2.0
+50000.0
+0.0
+23703.0
+0.0
+200.0
+64.0
+50.0
+22.0
+0.0
+10.0
+10.0
+5.0
+10.0
+-136570.0
+-141530.0
+-92298.0
+1.0
+2.0
+0.0
+1.0
+0.0
+0.0
+1.0
+0.0
+0.0
+0.0
+1.0
+0.0
+0.0
+0.0
+1.0
+1.0
+0.0
+0.0
+0.0
+200.0
+64.0
+1.0
+0.0
+0.0
+1.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+
+
+END
+X SetScale d,0,0,"",'wParamsNum'
+X SetScale /P x,0.0,1.0,"",'wParamsNum'
+X SetDimLabel 0, 0, HdrLenInValuePairs, wParamsNum
+X SetDimLabel 0, 1, HdrLenInBytes, wParamsNum
+X SetDimLabel 0, 2, MinVolts_AO, wParamsNum
+X SetDimLabel 0, 3, MaxVolts_AO, wParamsNum
+X SetDimLabel 0, 4, StimChanMask, wParamsNum
+X SetDimLabel 0, 5, MaxStimBufMapLen, wParamsNum
+X SetDimLabel 0, 6, NumberOfStimBufs, wParamsNum
+X SetDimLabel 0, 7, TargetedPixDur_us, wParamsNum
+X SetDimLabel 0, 8, MinVolts_AI, wParamsNum
+X SetDimLabel 0, 9, MaxVolts_AI, wParamsNum
+X SetDimLabel 0, 10, InputChanMask, wParamsNum
+X SetDimLabel 0, 11, NumberOfInputChans, wParamsNum
+X SetDimLabel 0, 12, PixSizeInBytes, wParamsNum
+X SetDimLabel 0, 13, NumberOfPixBufsSet, wParamsNum
+X SetDimLabel 0, 14, PixelOffs, wParamsNum
+X SetDimLabel 0, 15, PixBufCounter, wParamsNum
+X SetDimLabel 0, 16, User_ScanMode, wParamsNum
+X SetDimLabel 0, 17, User_dxPix, wParamsNum
+X SetDimLabel 0, 18, User_dyPix, wParamsNum
+X SetDimLabel 0, 19, User_nPixRetrace, wParamsNum
+X SetDimLabel 0, 20, User_nXPixLineOffs, wParamsNum
+X SetDimLabel 0, 21, User_divFrameBufReq, wParamsNum
+X SetDimLabel 0, 22, User_ScanType, wParamsNum
+X SetDimLabel 0, 23, User_nSubPixOversamp, wParamsNum
+X SetDimLabel 0, 24, RealPixDur, wParamsNum
+X SetDimLabel 0, 25, OversampFactor, wParamsNum
+X SetDimLabel 0, 26, XCoord_um, wParamsNum
+X SetDimLabel 0, 27, YCoord_um, wParamsNum
+X SetDimLabel 0, 28, ZCoord_um, wParamsNum
+X SetDimLabel 0, 29, ZStep_um, wParamsNum
+X SetDimLabel 0, 30, Zoom, wParamsNum
+X SetDimLabel 0, 31, Angle_deg, wParamsNum
+X SetDimLabel 0, 32, User_NFrPerStep, wParamsNum
+X SetDimLabel 0, 33, User_XOffset_V, wParamsNum
+X SetDimLabel 0, 34, User_YOffset_V, wParamsNum
+X SetDimLabel 0, 35, User_dzPix, wParamsNum
+X SetDimLabel 0, 37, User_nZPixLineOff, wParamsNum
+X SetDimLabel 0, 39, User_SetupID, wParamsNum
+X SetDimLabel 0, 40, User_LaserWaveLen_nm, wParamsNum
+X SetDimLabel 0, 43, User_aspectRatioFr, wParamsNum
+X SetDimLabel 0, 44, User_stimBufPerFr, wParamsNum
+X SetDimLabel 0, 45, User_nYPixLineOffs, wParamsNum
+X SetDimLabel 0, 46, User_iChFastScan, wParamsNum
+X SetDimLabel 0, 47, User_noYScan, wParamsNum
+X SetDimLabel 0, 48, User_dxFrDecoded, wParamsNum
+X SetDimLabel 0, 49, User_dyFrDecoded, wParamsNum
+X SetDimLabel 0, 50, User_dzFrDecoded, wParamsNum
+X SetDimLabel 0, 51, User_trajDefVRange_V, wParamsNum
+X SetDimLabel 0, 52, User_nTrajParams, wParamsNum
+X SetDimLabel 0, 53, User_zoomZ, wParamsNum
+X SetDimLabel 0, 54, User_offsetZ_V, wParamsNum
+X SetDimLabel 0, 55, User_zeroZ_V, wParamsNum
+X SetDimLabel 0, 56, User_ETL_polarity_V, wParamsNum
+X SetDimLabel 0, 57, User_ETL_min_V, wParamsNum
+X SetDimLabel 0, 58, User_ETL_max_V, wParamsNum
+X SetDimLabel 0, 59, User_ETL_neutral_V, wParamsNum
