@@ -16,7 +16,31 @@ from ParamsNum_to_dict import ParamsNum_PythontoIGOR_dict, ParamsNum_IGORtoPytho
 
 def pull_labels_and_clean(path):
     """
-    Pulls labels from pre-existing text file (much easier to keep track of indeces)
+    Pulls labels from a pre-existing text file and cleans the data.
+
+    Parameters
+    ----------
+    path : str
+        The path to the text file containing labels.
+
+    Returns
+    -------
+    list of str
+        A list of labels extracted from the specified text file. 'nan' strings
+        are replaced with empty strings in the result.
+
+    Notes
+    -----
+    This function reads the labels from the given text file using NumPy's
+    `loadtxt` function and then cleans the data by replacing 'nan' strings
+    with empty strings.
+
+    Examples
+    --------
+    >>> labels_path = "path/to/labels.txt"
+    >>> cleaned_labels = pull_labels_and_clean(labels_path)
+    >>> print(cleaned_labels)
+    ['label1', 'label2', '', 'label4', ...]
     """
     # Get label list
     labels = np.loadtxt(path, dtype=str)
@@ -25,6 +49,42 @@ def pull_labels_and_clean(path):
     return labels
 
 def load_Igor(path):
+    """
+    Load data from an Igor Pro file using the SMP class.
+
+    Parameters
+    ----------
+    path : str
+        The file path to the Igor Pro file.
+
+    Returns
+    -------
+    SMP
+        An SMP object containing loaded data.
+
+    Notes
+    -----
+    This function initializes an SMP object,
+    loads the header using the `loadSMH` method, and then loads the data using
+    the `loadSMP` method.
+
+    Parameters
+    ----------
+    path : str
+        The file path to the Igor Pro file.
+
+    Returns
+    -------
+    SMP
+        An SMP object containing loaded data.
+
+    Examples
+    --------
+    >>> igor_file_path = "path/to/igor_file.ibw"
+    >>> loaded_smp_object = load_Igor(igor_file_path)
+    >>> print(loaded_smp_object)
+    <SMP object at 0x...>
+    """
     # Initiate object
     scmf = SMP()
     # Load header
@@ -34,6 +94,42 @@ def load_Igor(path):
     return scmf
 
 def build_wParams(initialised_SMP_object):
+    """
+    Build wParamsStr and wParamsNum Igor Waves from an initialised SMP object.
+
+    Parameters
+    ----------
+    initialised_SMP_object : SMP
+        An SMP (Scanning Microscopy Particle) object that has been initialized and
+        contains key-value pair information.
+
+    Returns
+    -------
+    wParamsStr : IgorWave
+        An Igor Wave containing string values for specified parameters.
+
+    wParamsNum : IgorWave
+        An Igor Wave containing numeric values for specified parameters.
+
+    Notes
+    -----
+    This function builds two Igor Waves, `wParamsStr` and `wParamsNum`, from the
+    key-value pair information stored in the initialised SMP object. The Waves are
+    constructed based on specific labels and values extracted from the SMP object.
+
+    Parameters
+    ----------
+    initialised_SMP_object : SMP
+        An SMP object that has been initialized and contains key-value pair information.
+
+    Returns
+    -------
+    wParamsStr : IgorWave
+        An Igor Wave containing string values for specified parameters.
+
+    wParamsNum : IgorWave
+        An Igor Wave containing numeric values for specified parameters.
+    """
     # Build wParamsNum and wParamsStr
     keys = initialised_SMP_object._kvPairDict.keys() 
     AllParams = [(i, initialised_SMP_object._kvPairDict[i]) for i in initialised_SMP_object._kvPairDict]
@@ -72,10 +168,39 @@ def build_wParams(initialised_SMP_object):
     return wParamsStr, wParamsNum
     # return wParamsStr_vals, wParamsNum_vals
 
-
-
-
 def output_ch2crop(scanm_file_object, input_path):
+    """
+    Process and save cropped Channel 2 data along with relevant Igor Waves.
+
+    Parameters
+    ----------
+    scanm_file_object : SMP
+        A ScanM File object containing imaging data.
+
+    input_path : str
+        The file path to the input ScanM file.
+
+    Notes
+    -----
+    This function processes Channel 2 data from the given ScanM File object,
+    crops the trigger channel, and saves the relevant information as Igor Waves
+    (.ibw files and associated .itx tables).
+
+    Parameters
+    ----------
+    scanm_file_object : SMP
+        A ScanM File object containing imaging data.
+
+    input_path : str
+        The file path to the input ScanM file.
+
+    Examples
+    --------
+    >>> scanm_file = initialise_SMP()  # Assuming a function to initialize SMP objects
+    >>> input_file_path = "path/to/scanm_file.smp"
+    >>> output_ch2crop(scanm_file, input_file_path)
+    >>> # Check the output folder for saved Igor Waves and tables.
+    """
     # Create nice paths for save directory
     input_path = pathlib.Path(input_path)
     save_path_parent = pathlib.Path(input_path).parent
@@ -107,5 +232,30 @@ def output_ch2crop(scanm_file_object, input_path):
     print("Done. Saved outputs to", save_path)
 
 def filesize_reducer(input_path):
+    """
+    Reduce the file size of an Igor Pro file by cropping Channel 2 data.
+
+    Parameters
+    ----------
+    input_path : str
+        The file path to the input Igor Pro file.
+
+    Notes
+    -----
+    This function loads the Igor Pro file from the specified path, processes it by
+    cropping Channel 2 data, and saves the relevant information, effectively reducing
+    the file size.
+
+    Parameters
+    ----------
+    input_path : str
+        The file path to the input Igor Pro file.
+
+    Examples
+    --------
+    >>> input_file_path = "path/to/igor_file.ibw"
+    >>> filesize_reducer(input_file_path)
+    >>> # Check the output folder for reduced file size Igor Waves and tables.
+    """
     scanmfile = load_Igor(input_path)
     output_ch2crop(scanmfile, input_path)
